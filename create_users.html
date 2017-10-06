@@ -1,0 +1,48 @@
+
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var domainname = 'http://intensive.pachamama.org';
+   
+	var token = '6161d401b19b05444b77ef731b848a1a';
+   
+	var functionname = 'core_user_create_users';
+	var serverurl = domainname + '/webservice/rest/server.php' ;
+   	var userstocreate = [{  username: 'testusername7g',
+							password: 'testpassword7g',
+							firstname: 'testfirstname7g',
+							lastname: 'testlastname7g',
+							email: 'testemail32g@moodle.com'							
+						 },
+						 {  username: 'testusername42g',
+							password : 'testpassword42g',
+							firstname : 'testfirstname42g',
+							lastname : 'testlastname42g',
+							email : 'testemail42g@moodle.com',
+							timezone : 'Pacific/Port_Moresby'
+						 }
+					 ];
+	var data = {
+				wstoken: token,
+				wsfunction: functionname,
+				moodlewsrestformat: 'json',
+				users: userstocreate
+				}
+	
+	
+	var response = $.ajax(
+							{   type: 'POST',
+								data: data,
+								url: serverurl
+							}
+						 );
+	console.info(response);
+});
+</script>
+</head>
+<body>
+	Check your Javascript console for the "responseText" value.
+</body>
+</html>
